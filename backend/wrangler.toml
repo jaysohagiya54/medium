@@ -22,4 +22,4 @@ JWT_SECRET = "difib@63Secr3T"
 # database_id = ""
 
 # [ai]
-# binding = "AI"
+# binding = "AI" 

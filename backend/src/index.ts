@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { userRouter } from './routes/user';
 import { blogRouter } from './routes/blog';
 import { verify } from 'hono/jwt';
+import { cors } from 'hono/cors';
 
 export const app = new Hono<{
   Bindings: {
@@ -9,7 +10,7 @@ export const app = new Hono<{
       JWT_SECRET: string;
   }
 }>();
-
+app.use("/*",cors())
 app.use("/api/v1/blog/*",async (c,next) => {
   const header = c.req.header("authorization");
   const token = header?.split(" ")[1];
