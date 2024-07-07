@@ -35,6 +35,30 @@ app.use("/api/v1/blog/*",async (c,next) => {
 
 }
 )
+app.use("/api/v1/user/all",async (c,next) => {
+  const header = c.req.header("authorization");
+  const token = header?.split(" ")[1];
+     if(!token){
+    c.status(404)
+    return c.json({
+      msg:"No headers found"
+    })
+   }
+
+  const response = await verify(token,c.env?.JWT_SECRET);
+
+  if(response.id){
+    //@ts-ignore
+    c.set("userId",response.id)
+    await next() 
+  } else {
+    return c.json({
+      msg:"Token is invalid"
+    })
+  }
+
+}
+)
 app.route('/api/v1/user', userRouter)
 app.route('/api/v1/blog', blogRouter)
 

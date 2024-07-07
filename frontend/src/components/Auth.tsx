@@ -16,14 +16,22 @@ const Auth = ({ type }: {
     const navigate = useNavigate();
 
     const handleSubmit = async() => {
+        let response;
         try {
-            const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type === "Signin" ? "signin" :"signup"}`, {
-                  email: postInputs.email,
-                  password: postInputs.password
-            });
+            if(type === "Signin"){
+                response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`, {
+                    email: postInputs.email,
+                    password: postInputs.password,                
+              });
+            } else {
+                response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`, {
+                    email: postInputs.email,
+                    password: postInputs.password,
+                    name:postInputs.name
+              });
+            }
            
             if(response.status){
-                console.log(response);
                 localStorage.setItem("token",response.data.jwt);
                 navigate("/blogs")
             }
