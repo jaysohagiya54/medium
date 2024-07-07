@@ -5,7 +5,7 @@
     <h1 align="center">SOLOS</h1>
 </p>
 <p align="center">
-    <em>HTTP error 401 for prompt `slogan`</em>
+    <em>Create your own solos now</em>
 </p>
 <p align="center">
 	<img src="https://img.shields.io/github/license/jaysohagiya54/solos?style=flat&color=0080ff" alt="license">
