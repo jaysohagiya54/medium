@@ -51,7 +51,7 @@ const Auth = ({ type }: {
             </div>
             <div className='text-md text-gray-400'>
             {type === "Signin" ? "Don't have an account? " : "Already have an account? "}      
-                <Link to={type === "Signin" ? "/signup" : "/signin"} className='text-sm underline'>{type === "Signin" ? "Register" : "Login"} </Link>
+                <Link to={type === "Signin" ? "/" : "/signin"} className='text-sm underline'>{type === "Signin" ? "Register" : "Login"} </Link>
             </div>
            {type === "Signup" ?  <LabelInput label={"Name"} type={"text"} placeholder={"John Doe"} onChange={(e) => {
                  setPostInputs(c => ({
